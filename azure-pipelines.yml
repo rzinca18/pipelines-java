@@ -29,7 +29,6 @@ jobs:
 - job: B
   steps:
   - bash: echo "B"
-jobs:
 - deployment: MyDeploy
   pool:
     vmImage: 'ubuntu-latest'
