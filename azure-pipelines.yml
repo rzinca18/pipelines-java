@@ -10,25 +10,9 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-stages:
-- stage: A
-  jobs:
-  - job: A1
-  steps:
-  - bash: echo "A1"
-  - job: A2
-  steps:
-  - bash: echo "A2"
-
-- stage: B
-  jobs:
-  - job: B1
-  steps:
-  - bash: echo "B1"
-  - job: B2
-  steps:
-  - bash: echo "B1"
-
+# this pipeline has one implicit stage
+jobs:
+- job: A
 steps:
 - task: Maven@3
   inputs:
@@ -46,3 +30,6 @@ steps:
     summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/site/jacoco/jacoco.xml"
     reportDirectory: "$(System.DefaultWorkingDirectory)/**/site/jacoco"
     failIfCoverageEmpty: true
+- job: B
+  steps:
+  - bash: echo "B"
