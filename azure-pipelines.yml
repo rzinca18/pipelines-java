@@ -29,7 +29,10 @@ jobs:
 - job: B
   steps:
   - bash: echo "B"
-- deployment: MyDeploy
+jobs:
+  - deployment: MyDeploy
+    pool:
+      vmImage: 'ubuntu-latest'
     workspace:
       clean: all
     environment: staging
