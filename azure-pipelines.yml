@@ -7,20 +7,13 @@ trigger:
   - main
   - releases/*
 
-strategy:
-  matrix:
-    linux:
-      imageName: "ubuntu-latest"
-    mac:
-      imageName: "macOS-latest"
-    windows:
-      imageName: "windows-latest"
-  maxParallel: 3
-
 pool:
-  vmImage: $(imageName)x
+  vmImage: 'ubuntu-latest'
+
+container: ubuntu:18.04
 
 steps:
+- script: printenv
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
