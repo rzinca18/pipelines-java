@@ -10,8 +10,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-container: ubuntu:18.04
-
 steps:
 - task: Maven@3
   inputs:
