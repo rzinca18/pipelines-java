@@ -7,8 +7,13 @@ trigger:
   - main
   - releases/*
 
-pool:
-  vmImage: 'ubuntu-latest'
+jobs:
+  - deployment: MyDeploy
+    pool:
+      vmImage: 'ubuntu-latest'
+    workspace:
+      clean: all
+    environment: staging
 
 steps:
 - task: Maven@3
@@ -27,11 +32,3 @@ steps:
     summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/site/jacoco/jacoco.xml"
     reportDirectory: "$(System.DefaultWorkingDirectory)/**/site/jacoco"
     failIfCoverageEmpty: true
-
-jobs:
-  - deployment: MyDeploy
-    pool:
-      vmImage: 'ubuntu-latest'
-    workspace:
-      clean: all
-    environment: staging
