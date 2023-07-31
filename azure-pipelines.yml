@@ -7,6 +7,9 @@ trigger:
   - main
   - releases/*
 
+pool:
+   vmImage: 'ubuntu-latest'
+
 jobs:
 - job: A
   steps:
